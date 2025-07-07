@@ -41,8 +41,8 @@ MongoDB: use to store the backend data.
 Follow these steps to get a local copy of the project up and running on your machine:
 
 # Clone the repository:
-git clone https://github.com/your-username/student_portal_BUETK.git
-cd student_portal_BUETK
+[(https://github.com/sanoX10/Ahsan_tareen_student_portal.git)]
+cd Ahsan_tareen_student_portal
 Frontend Setup:
 you have a VS code in which a live server is insatall. 
 click on go live you will be able to see the frontend only.
