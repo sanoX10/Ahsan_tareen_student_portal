@@ -1,0 +1,409 @@
+/* style.css */
+
+/* Custom CSS Variables for consistent theming */
+:root {
+    /* New Color Palette */
+    --primary-blue: #2C3E50; /* Deep Midnight Blue - for main actions, header */
+    --primary-blue-dark: #1A242F; /* Darker shade for hover */
+
+    --secondary-orange: #F39C12; /* Warm Orange - for secondary actions */
+    --secondary-orange-dark: #E67E22; /* Darker shade for hover */
+
+    --success-green: #27AE60; /* Emerald Green - for success actions */
+    --success-green-dark: #229954; /* Darker shade for hover */
+
+    --danger-red: #E74C3C; /* Alizarin Red - for danger/delete actions */
+    --danger-red-dark: #C0392B; /* Darker shade for hover */
+
+    --background-light: #ECF0F1; /* Light Gray - for general background */
+    --card-background: #FFFFFF; /* White - for cards and modals */
+    --border-color: #DDE6E8; /* Soft Gray - for borders */
+    --text-color-dark: #34495E; /* Dark Gray - for main text */
+    --text-color-medium: #546A7B; /* Medium Gray - for secondary text */
+    --text-color-light: #7F8C8D; /* Light Gray - for subtle text/headers */
+
+    /* New Section Background Colors for Student Dashboard */
+    --profile-bg: #E0E7FF; /* Light Lavender/Violet */
+    --courses-bg: #E0F2F7; /* Light Teal/Cyan */
+    --grades-bg: #E6F7E6; /* Pale Green/Blue-Green */
+}
+
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color-dark); /* Using the new dark text color */
+    background-color: var(--background-light); /* Using the new light background */
+    min-height: 100vh; /* Ensure full viewport height */
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* Increased padding for better spacing */
+    padding-right: 1.5rem;
+}
+
+/* Header and Navigation */
+header {
+    background-color: rgba(44, 62, 80, 0.95); /* Semi-transparent Deep Midnight Blue */
+    backdrop-filter: blur(8px); /* Stronger frosted glass effect */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 0; /* Adjust padding */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+}
+
+header h1 {
+    color: white;
+    font-size: 2.25rem; /* Larger title */
+    font-weight: 700;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.btn-danger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.8rem; /* Slightly larger padding */
+    border-radius: 0.625rem; /* More rounded corners */
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+    text-transform: uppercase; /* Uppercase text for buttons */
+    letter-spacing: 0.05em; /* Slight letter spacing */
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-blue-dark);
+    transform: translateY(-3px); /* More pronounced lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-orange);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-orange-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.btn-success {
+    background-color: var(--success-green);
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: var(--success-green-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.btn-danger {
+    background-color: var(--danger-red);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-red-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Form Elements */
+.form-input {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 1.2rem; /* Slightly more padding */
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem; /* More rounded corners */
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-color-dark);
+    background-color: white;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(44, 62, 80, 0.2); /* Focus ring with new primary color */
+}
+
+textarea.form-input {
+    resize: vertical;
+    min-height: 80px; /* Minimum height for textareas */
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    background-color: var(--card-background); /* Default background for cards */
+    padding: 2.5rem; /* Increased padding */
+    border-radius: 1rem; /* More rounded corners */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1); /* Softer, larger shadow */
+    border: 1px solid var(--border-color);
+}
+
+/* Specific Student Dashboard Section Backgrounds */
+#student-dashboard .dashboard-card:nth-child(1) { /* My Profile card */
+    background-color: var(--profile-bg);
+}
+
+#student-dashboard .dashboard-card:nth-child(2) { /* My Enrolled Courses card */
+    background-color: var(--courses-bg);
+}
+
+#student-dashboard .dashboard-card:nth-child(3) { /* My Grades card */
+    background-color: var(--grades-bg);
+}
+
+
+/* Table Styles */
+.min-w-full {
+    min-width: 100%;
+}
+
+.table-header {
+    padding: 1rem 1.5rem; /* More padding */
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: 700; /* Bolder header text */
+    color: var(--text-color-light); /* Using lighter text color for headers */
+    text-transform: uppercase;
+    letter-spacing: 0.08em; /* Increased letter spacing */
+    border-bottom: 2px solid var(--border-color);
+}
+
+.divide-y > * + * {
+    border-top-width: 1px;
+    border-color: var(--border-color);
+}
+
+.bg-gray-50 {
+    background-color: #F9FAFB; /* Keeping a light background for table headers */
+}
+
+.bg-white {
+    background-color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #FDFDFD; /* Very subtle zebra striping */
+}
+
+tbody tr:hover {
+    background-color: #F5F5F5; /* Subtle hover effect on rows */
+    transition: background-color 0.2s ease-in-out;
+}
+
+td {
+    padding: 1.2rem 1.5rem; /* More padding for table cells */
+    font-size: 0.95rem;
+    color: var(--text-color-dark);
+}
+
+/* Action buttons within tables */
+.action-btn {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+    border-radius: 0.4rem;
+    margin-right: 0.6rem;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn:last-child {
+    margin-right: 0;
+}
+
+.action-btn.edit {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.action-btn.edit:hover {
+    background-color: var(--primary-blue-dark);
+    transform: translateY(-1px);
+}
+
+.action-btn.delete {
+    background-color: var(--danger-red);
+    color: white;
+}
+
+.action-btn.delete:hover {
+    background-color: var(--danger-red-dark);
+    transform: translateY(-1px);
+}
+
+/* Modals */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker, more opaque overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-overlay:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    padding: 3rem; /* More generous padding */
+    border-radius: 1.25rem; /* Even more rounded */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Deeper shadow */
+    max-width: 550px; /* Slightly wider modal */
+    width: 90%;
+    transform: translateY(-30px); /* More pronounced slide-in */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease-in-out;
+}
+
+.modal-overlay:not(.hidden) .modal-content {
+    transform: translateY(0); /* Slide into view */
+}
+
+/* Loading Spinner */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* More opaque white overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.spinner {
+    border: 8px solid #E0E0E0; /* Lighter spinner background */
+    border-top: 8px solid var(--primary-blue); /* Spinner color matches new primary blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Message Box (Toast Notification) */
+#message-box {
+    /* Tailwind classes for positioning and initial state are in HTML */
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* More pronounced springy effect */
+    padding: 1rem 1.5rem; /* More padding */
+    font-size: 1.05rem; /* Slightly larger font */
+}
+
+#message-box.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Utility Classes (if not fully covered by Tailwind) */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.75rem;
+    }
+
+    .dashboard-card {
+        padding: 1.5rem;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-success,
+    .btn-danger {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+        border-radius: 0.5rem;
+    }
+
+    .table-header,
+    td {
+        padding: 0.8rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    #admin-dashboard nav button {
+        width: 100%;
+        margin-bottom: 0.75rem; /* More space between buttons on small screens */
+    }
+
+    .modal-content {
+        padding: 2rem;
+        width: 95%;
+        border-radius: 0.75rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    .dashboard-card {
+        padding: 1rem;
+    }
+
+    .action-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+        margin-right: 0.4rem;
+    }
+
+    .form-input {
+        padding: 0.6rem 0.9rem;
+    }
+}

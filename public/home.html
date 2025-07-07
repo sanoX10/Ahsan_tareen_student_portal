@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUETK - Balochistan University of Engineering & Technology Khuzdar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-10 sticky top-0 z-50 animate-slideDown">
+        <nav class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/3498db/ffffff?text=BU" alt="BUETK Logo" class="rounded-full">
+                <a href="#" class="text-2xl font-extrabold text-gray-800 hover:text-blue-600 transition-colors duration-300">BUETK</a>
+            </div>
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex space-x-8 items-center">
+                <li><a href="#home" class="nav-link text-gray-700 font-medium text-lg" data-section="home">Home</a></li>
+                <li><a href="#about" class="nav-link text-gray-700 font-medium text-lg" data-section="about">About</a></li>
+                <li><a href="#academics" class="nav-link text-gray-700 font-medium text-lg" data-section="academics">Academics</a></li>
+                <li><a href="#programs" class="nav-link text-gray-700 font-medium text-lg" data-section="programs">Programs</a></li>
+                <li><a href="#admission" class="nav-link text-gray-700 font-medium text-lg" data-section="admission">Admission</a></li>
+                <li><a href="#gallery" class="nav-link text-gray-700 font-medium text-lg" data-section="gallery">Gallery</a></li>
+                <li><a href="#faculty" class="nav-link text-gray-700 font-medium text-lg" data-section="faculty">Faculty</a></li>
+                <li><a href="#contact" class="nav-link text-gray-700 font-medium text-lg" data-section="contact">Contact</a></li>
+                <li><a href="index.html" class="btn-primary px-4 py-2 rounded-full text-md font-semibold inline-block shadow-md hover:shadow-lg" data-section="login">Login <i class="fas fa-sign-in-alt ml-1"></i></a></li>
+            </ul>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-64 h-full bg-white shadow-lg p-6 z-50 md:hidden">
+        <button id="close-mobile-menu" class="absolute top-4 right-4 text-gray-700 focus:outline-none">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+        <ul class="flex flex-col space-y-6 mt-10">
+            <li><a href="#home" class="nav-link text-gray-700 font-medium text-xl block py-2" data-section="home">Home</a></li>
+            <li><a href="#about" class="nav-link text-gray-700 font-medium text-xl block py-2" data-section="about">About</a></li>
+            <li><a href="#academics" class="nav-link text-gray-700 font-medium text-xl block py-2" data-section="academics">Academics</a></li>
+            <li><a href="#programs" class="nav-link text-gray-700 font-medium text-xl block py-2" data-section="programs">Programs</a></li>
+            <li><a href="#admission" class="nav-link text-gray-700 font-medium text-xl block py-2" data-section="admission">Admission</a></li>
+            <li><a href="#gallery" class="nav-link text-gray-700 font-medium text-xl block py-2" data-section="gallery">Gallery</a></li>
+            <li><a href="#faculty" class="nav-link text-gray-700 font-medium text-xl block py-2" data-section="faculty">Faculty</a></li>
+            <li><a href="#contact" class="nav-link text-gray-700 font-medium text-xl block py-2" data-section="contact">Contact</a></li>
+            <li><a href="index.html" class="btn-primary px-4 py-2 rounded-full text-md font-semibold inline-block shadow-md hover:shadow-lg w-full text-center" data-section="login">Login <i class="fas fa-sign-in-alt ml-1"></i></a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+        <!-- Home Section -->
+        <section id="home" class="section active hero-section text-white flex items-center justify-center min-h-[calc(100vh-80px)] py-16 px-4">
+            <div class="text-center max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6 animate-fadeIn">
+                    Welcome to <span class="text-blue-400">BUETK</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90 animate-fadeIn" style="animation-delay: 0.2s;">
+                    Empowering Minds, Shaping Futures through Excellence in Engineering & Technology.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fadeIn" style="animation-delay: 0.4s;">
+                    <a href="#admission" data-section="admission" class="btn-primary px-8 py-4 rounded-full text-lg font-semibold inline-block shadow-lg hover:shadow-xl">
+                        Apply Now <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#programs" data-section="programs" class="bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold inline-block shadow-lg hover:shadow-xl hover:bg-gray-100 transition-colors duration-300">
+                        Explore Programs <i class="fas fa-graduation-cap ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section py-16 px-4 bg-white">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12 animate-slideIn">About BUETK</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="animate-slideIn" style="animation-delay: 0.2s;">
+                        <img src="images\university.jpeg" alt="BUETK Building" class="rounded-xl shadow-lg w-full h-auto object-cover">
+                    </div>
+                    <div class="space-y-6 animate-slideIn" style="animation-delay: 0.4s;">
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            Balochistan University of Engineering & Technology Khuzdar (BUETK) is a premier institution dedicated to providing quality education in engineering and technology. Established with a vision to foster innovation and research, BUETK aims to produce highly skilled professionals who can contribute significantly to national and global development.
+                        </p>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            Our commitment extends beyond academics, focusing on holistic student development, ethical values, and community engagement. We pride ourselves on a vibrant campus life, state-of-the-art facilities, and a distinguished faculty dedicated to nurturing the next generation of leaders.
+                        </p>
+                        <a href="#contact" data-section="contact" class="btn-primary px-6 py-3 rounded-full text-md font-semibold inline-block">
+                            Learn More <i class="fas fa-info-circle ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-16 text-center">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-8 animate-slideIn">Our Mission & Vision</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-blue-50 p-8 rounded-xl shadow-md card animate-slideIn" style="animation-delay: 0.6s;">
+                            <i class="fas fa-bullseye text-5xl text-blue-600 mb-4 feature-icon"></i>
+                            <h4 class="text-2xl font-semibold text-gray-800 mb-3">Mission</h4>
+                            <p class="text-gray-700">To provide high-quality engineering and technological education, conduct cutting-edge research, and foster an environment of innovation and critical thinking.</p>
+                        </div>
+                        <div class="bg-blue-50 p-8 rounded-xl shadow-md card animate-slideIn" style="animation-delay: 0.8s;">
+                            <i class="fas fa-lightbulb text-5xl text-blue-600 mb-4 feature-icon"></i>
+                            <h4 class="text-2xl font-semibold text-gray-800 mb-3">Vision</h4>
+                            <p class="text-gray-700">To be a leading university recognized globally for academic excellence, research impact, and its contribution to societal advancement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Academics Section -->
+        <section id="academics" class="section py-16 px-4 bg-gray-100">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12 animate-slideIn">Academics at BUETK</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-md card animate-slideIn" style="animation-delay: 0.2s;">
+                        <i class="fas fa-book-open text-5xl text-green-600 mb-4 feature-icon"></i>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Academic Departments</h3>
+                        <p class="text-gray-700 mb-4">Explore our diverse range of departments offering specialized courses and research opportunities.</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Civil Engineering</li>
+                            <li>Electrical Engineering</li>
+                            <li>Mechanical Engineering</li>
+                            <li>Computer Science & IT</li>
+                            <li>Basic Sciences</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md card animate-slideIn" style="animation-delay: 0.4s;">
+                        <i class="fas fa-flask text-5xl text-purple-600 mb-4 feature-icon"></i>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Research & Innovation</h3>
+                        <p class="text-gray-700 mb-4">BUETK is at the forefront of groundbreaking research, fostering innovation and discovery.</p>
+                        <p class="text-700">Our faculty and students are engaged in various research projects, contributing to advancements in science and technology.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md card animate-slideIn" style="animation-delay: 0.6s;">
+                        <i class="fas fa-chalkboard-teacher text-5xl text-orange-600 mb-4 feature-icon"></i>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Faculty & Staff</h3>
+                        <p class="text-gray-700 mb-4">Our highly qualified and experienced faculty are dedicated to providing excellent education and mentorship.</p>
+                        <p class="text-gray-700">They bring a wealth of knowledge and practical experience to the classroom, ensuring a rich learning experience.</p>
+                    </div>
+                </div>
+                <div class="mt-12 text-center">
+                    <a href="#programs" data-section="programs" class="btn-primary px-6 py-3 rounded-full text-md font-semibold inline-block">
+                        View All Programs <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section id="programs" class="section py-16 px-4 bg-white">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12 animate-slideIn">Our Academic Programs</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Program Card 1 -->
+                    <div class="bg-blue-50 p-6 rounded-xl shadow-md card animate-slideIn" style="animation-delay: 0.2s;">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">B.Sc. Civil Engineering</h3>
+                        <p class="text-gray-700 mb-4">Focuses on design, construction, and maintenance of infrastructure projects.</p>
+                        <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
+                            <li>Structural Engineering</li>
+                            <li>Transportation Engineering</li>
+                            <li>Environmental Engineering</li>
+                        </ul>
+                        <button class="mt-4 btn-primary px-4 py-2 text-sm rounded-full">Learn More</button>
+                    </div>
+                    <!-- Program Card 2 -->
+                    <div class="bg-blue-50 p-6 rounded-xl shadow-md card animate-slideIn" style="animation-delay: 0.4s;">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">B.Sc. Electrical Engineering</h3>
+                        <p class="text-gray-700 mb-4">Covers power systems, electronics, control systems, and telecommunications.</p>
+                        <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
+                            <li>Power Engineering</li>
+                            <li>Electronics Engineering</li>
+                            <li>Control Systems</li>
+                        </ul>
+                        <button class="mt-4 btn-primary px-4 py-2 text-sm rounded-full">Learn More</button>
+                    </div>
+                    <!-- Program Card 3 -->
+                    <div class="bg-blue-50 p-6 rounded-xl shadow-md card animate-slideIn" style="animation-delay: 0.6s;">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">B.Sc. Mechanical Engineering</h3>
+                        <p class="text-gray-700 mb-4">Deals with design, analysis, manufacturing, and maintenance of mechanical systems.</p>
+                        <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
+                            <li>Thermodynamics</li>
+                            <li>Fluid Mechanics</li>
+                            <li>Machine Design</li>
+                        </ul>
+                        <button class="mt-4 btn-primary px-4 py-2 text-sm rounded-full">Learn More</button>
+                    </div>
+                    <!-- Program Card 4 -->
+                    <div class="bg-blue-50 p-6 rounded-xl shadow-md card animate-slideIn" style="animation-delay: 0.8s;">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">B.Sc. Computer Science</h3>
+                        <p class="text-gray-700 mb-4">Focuses on algorithms, data structures, software development, and computer systems.</p>
+                        <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
+                            <li>Software Engineering</li>
+                            <li>Artificial Intelligence</li>
+                            <li>Networking</li>
+                        </ul>
+                        <button class="mt-4 btn-primary px-4 py-2 text-sm rounded-full">Learn More</button>
+                    </div>
+                    <!-- Program Card 5 -->
+                    <div class="bg-blue-50 p-6 rounded-xl shadow-md card animate-slideIn" style="animation-delay: 1.0s;">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">B.Sc. Information Technology</h3>
+                        <p class="text-gray-700 mb-4">Covers database management, web development, cybersecurity, and IT infrastructure.</p>
+                        <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
+                            <li>Database Systems</li>
+                            <li>Web Technologies</li>
+                            <li>Cyber Security</li>
+                        </ul>
+                        <button class="mt-4 btn-primary px-4 py-2 text-sm rounded-full">Learn More</button>
+                    </div>
+                    <!-- Program Card 6 -->
+                    <div class="bg-blue-50 p-6 rounded-xl shadow-md card animate-slideIn" style="animation-delay: 1.2s;">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">M.Sc. Engineering Programs</h3>
+                        <p class="text-gray-700 mb-4">Advanced studies and research opportunities in various engineering disciplines.</p>
+                        <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
+                            <li>Advanced Structures</li>
+                            <li>Power Systems Design</li>
+                            <li>Software Project Management</li>
+                        </ul>
+                        <button class="mt-4 btn-primary px-4 py-2 text-sm rounded-full">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Campus Gallery Section -->
+        <section id="gallery" class="section py-16 px-4 bg-gray-100">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12 animate-slideIn">Campus Gallery</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="rounded-xl shadow-lg overflow-hidden card animate-slideIn" style="animation-delay: 0.2s;">
+                        <img src="images\buetkpi.jpeg" alt="BUETK Library" class="w-full h-48 object-cover">
+                        <div class="p-4 bg-white">
+                            <p class="text-lg font-semibold text-gray-800">University Library</p>
+                            <p class="text-gray-600 text-sm">A hub of knowledge and research.</p>
+                        </div>
+                    </div>
+                    <div class="rounded-xl shadow-lg overflow-hidden card animate-slideIn" style="animation-delay: 0.4s;">
+                        <img src="images/buetklab.jpg" alt="BUETK Labs" class="w-full h-48 object-cover">
+                        <div class="p-4 bg-white">
+                            <p class="text-lg font-semibold text-gray-800">State-of-the-Art Labs</p>
+                            <p class="text-gray-600 text-sm">Practical learning facilities.</p>
+                        </div>
+                    </div>
+                    <div class="rounded-xl shadow-lg overflow-hidden card animate-slideIn" style="animation-delay: 0.6s;">
+                        <img src="images/buetkadmin.jpg" alt="BUETK Auditorium" class="w-full h-48 object-cover">
+                        <div class="p-4 bg-white">
+                            <p class="text-lg font-semibold text-gray-800">Main Auditorium</p>
+                            <p class="text-gray-600 text-sm">Host to events and conferences.</p>
+                        </div>
+                    </div>
+                    <div class="rounded-xl shadow-lg overflow-hidden card animate-slideIn" style="animation-delay: 0.8s;">
+                        <img src="images/hostel1.jpg" alt="BUETK Hostel" class="w-full h-48 object-cover">
+                        <div class="p-4 bg-white">
+                            <p class="text-lg font-semibold text-gray-800">Student Hostels</p>
+                            <p class="text-gray-600 text-sm">Comfortable living for students.</p>
+                        </div>
+                    </div>
+                    <div class="rounded-xl shadow-lg overflow-hidden card animate-slideIn" style="animation-delay: 1.0s;">
+                        <img src="images/sportscomplex.jpg" alt="BUETK Sports Complex" class="w-full h-48 object-cover">
+                        <div class="p-4 bg-white">
+                            <p class="text-lg font-semibold text-gray-800">Sports Complex</p>
+                            <p class="text-gray-600 text-sm">Promoting physical well-being.</p>
+                        </div>
+                    </div>
+                    <div class="rounded-xl shadow-lg overflow-hidden card animate-slideIn" style="animation-delay: 1.2s;">
+                        <img src="images\university.jpeg" alt="BUETK Cafeteria" class="w-full h-48 object-cover">
+                        <div class="p-4 bg-white">
+                            <p class="text-lg font-semibold text-gray-800">Campus Cafeteria</p>
+                            <p class="text-gray-600 text-sm">Delicious and healthy meals.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Faculty Highlights Section -->
+        <section id="faculty" class="section py-16 px-4 bg-white">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12 animate-slideIn">Meet Our Esteemed Faculty</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Faculty Member 1 -->
+                    <div class="bg-blue-50 p-6 rounded-xl shadow-md text-center card animate-slideIn" style="animation-delay: 0.2s;">
+                        <img src="https://placehold.co/150x150/3498db/ffffff?text=Dr.+A" alt="Dr. Ahmed Khan" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover border-4 border-blue-300">
+                        <h3 class="text-xl font-semibold text-gray-800">Dr. Noor-ud-din</h3>
+                        <p class="text-blue-600 font-medium">Head of software Engineering</p>
+                        <p class="text-gray-700 text-sm mt-2">Specialization: Artificial Intelligence</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors"><i class="fas fa-envelope text-xl"></i></a>
+                        </div>
+                    </div>
+                    <!-- Faculty Member 2 -->
+                    <div class="bg-blue-50 p-6 rounded-xl shadow-md text-center card animate-slideIn" style="animation-delay: 0.4s;">
+                        <img src="https://placehold.co/150x150/2980b9/ffffff?text=Prof.+B" alt="Prof. Aisha Bilal" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover border-4 border-blue-300">
+                        <h3 class="text-xl font-semibold text-gray-800">DR, Noor Ahmed</h3>
+                        <p class="text-blue-600 font-medium">Professor, Computer Science</p>
+                        <p class="text-gray-700 text-sm mt-2">Specialization: Artificial Intelligence</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors"><i class="fas fa-envelope text-xl"></i></a>
+                        </div>
+                    </div>
+                    <!-- Faculty Member 3 -->
+                    <div class="bg-blue-50 p-6 rounded-xl shadow-md text-center card animate-slideIn" style="animation-delay: 0.6s;">
+                        <img src="https://placehold.co/150x150/34495e/ffffff?text=Dr.+C" alt="Dr. Omar Farooq" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover border-4 border-blue-300">
+                        <h3 class="text-xl font-semibold text-gray-800">Dr. Omar Farooq</h3>
+                        <p class="text-blue-600 font-medium">Associate Professor, Electrical Engineering</p>
+                        <p class="text-gray-700 text-sm mt-2">Specialization: Power Systems</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors"><i class="fas fa-envelope text-xl"></i></a>
+                        </div>
+                    </div>
+                    <!-- Faculty Member 4 -->
+                    <div class="bg-blue-50 p-6 rounded-xl shadow-md text-center card animate-slideIn" style="animation-delay: 0.8s;">
+                        <img src="https://placehold.co/150x150/1abc9c/ffffff?text=Dr.+D" alt="Dr. Sana Tariq" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover border-4 border-blue-300">
+                        <h3 class="text-xl font-semibold text-gray-800">Abdul Raziq sab</h3>
+                        <p class="text-blue-600 font-medium">Assistant Professor, Mechanical Engineering</p>
+                        <p class="text-gray-700 text-sm mt-2">Specialization: Robotics</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                            <a href="#" class="text-600 hover:text-blue-600 transition-colors"><i class="fas fa-envelope text-xl"></i></a>
+                        </div>
+                    </div>
+                    <!-- Faculty Member 5 -->
+                    <div class="bg-blue-50 p-6 rounded-xl shadow-md text-center card animate-slideIn" style="animation-delay: 1.0s;">
+                        <img src="https://placehold.co/150x150/e67e22/ffffff?text=Prof.+E" alt="Prof. Zulfiqar Ali" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover border-4 border-blue-300">
+                        <h3 class="text-xl font-semibold text-gray-800">Prof. saif </h3>
+                        <p class="text-blue-600 font-medium">Lecturer, Basic Sciences</p>
+                        <p class="text-gray-700 text-sm mt-2">Specialization: Applied Physics</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors"><i class="fas fa-envelope text-xl"></i></a>
+                        </div>
+                    </div>
+                    <!-- Faculty Member 6 -->
+                    <div class="bg-blue-50 p-6 rounded-xl shadow-md text-center card animate-slideIn" style="animation-delay: 1.2s;">
+                        <img src="https://placehold.co/150x150/9b59b6/ffffff?text=Dr.+F" alt="Dr. Hina Khan" class="rounded-full w-32 h-32 mx-auto mb-4 object-cover border-4 border-blue-300">
+                        <h3 class="text-xl font-semibold text-gray-800">Dr. Naseer Ahmed</h3>
+                        <p class="text-blue-600 font-medium">Lecturer, Information Technology</p>
+                        <p class="text-gray-700 text-sm mt-2">Specialization: Cybersecurity</p>
+                        <div class="flex justify-center space-x-3 mt-4">
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors"><i class="fas fa-envelope text-xl"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admission Section -->
+        <section id="admission" class="section py-16 px-4 bg-gray-100">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12 animate-slideIn">Admission Information</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6 animate-slideIn" style="animation-delay: 0.2s;">
+                        <h3 class="text-3xl font-semibold text-gray-800 mb-4">How to Apply</h3>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            BUETK offers admissions in various undergraduate and postgraduate programs. Our admission process is designed to be transparent and accessible.
+                        </p>
+                        <ul class="list-decimal list-inside text-gray-700 text-lg space-y-3">
+                            <li><span class="font-semibold">Step 1:</span> Check Eligibility Criteria for your desired program.</li>
+                            <li><span class="font-semibold">Step 2:</span> Fill out the Online Application Form accurately.</li>
+                            <li><span class="font-semibold">Step 3:</span> Upload all required documents (transcripts, certificates, etc.).</li>
+                            <li><span class="font-semibold">Step 4:</span> Pay the Application Processing Fee.</li>
+                            <li><span class="font-semibold">Step 5:</span> Appear for the Entrance Test (if applicable).</li>
+                            <li><span class="font-semibold">Step 6:</span> Await Admission Decision and Merit List.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-slideIn" style="animation-delay: 0.4s;">
+                        <div class="bg-white p-8 rounded-xl shadow-lg">
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Important Dates</h3>
+                            <ul class="space-y-4 text-gray-700 text-lg">
+                                <li class="flex justify-between items-center border-b pb-2">
+                                    <span>Application Start:</span> <span class="font-medium text-blue-600">July 15, 2025</span>
+                                </li>
+                                <li class="flex justify-between items-center border-b pb-2">
+                                    <span>Application Deadline:</span> <span class="font-medium text-red-600">August 31, 2025</span>
+                                </li>
+                                <li class="flex justify-between items-center border-b pb-2">
+                                    <span>Entrance Test:</span> <span class="font-medium text-blue-600">September 15, 2025</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <span>Merit List Announcement:</span> <span class="font-medium text-blue-600">September 30, 2025</span>
+                                </li>
+                            </ul>
+                            <div class="mt-8 text-center">
+                                <a href="#" class="btn-primary px-6 py-3 rounded-full text-md font-semibold inline-block">
+                                    Download Prospectus <i class="fas fa-download ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- Contact Section -->
+        <section id="contact" class="section py-16 px-4 bg-gray-100">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12 animate-slideIn">Contact Us</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6 animate-slideIn" style="animation-delay: 0.2s;">
+                        <h3 class="text-3xl font-semibold text-gray-800 mb-4">Get in Touch</h3>
+                        <p class="text-lg text-gray-700">
+                            We're here to help! Feel free to reach out to us with any questions or inquiries.
+                        </p>
+                        <div class="flex items-center space-x-4 text-gray-700 text-lg">
+                            <i class="fas fa-map-marker-alt text-blue-600 text-2xl"></i>
+                            <span>Main Campus, Khuzdar, Balochistan, Pakistan</span>
+                        </div>
+                        <div class="flex items-center space-x-4 text-gray-700 text-lg">
+                            <i class="fas fa-phone-alt text-blue-600 text-2xl"></i>
+                            <span>+92 848 123456</span>
+                        </div>
+                        <div class="flex items-center space-x-4 text-gray-700 text-lg">
+                            <i class="fas fa-envelope text-blue-600 text-2xl"></i>
+                            <span>info@buetk.edu.pk</span>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="text-xl font-semibold text-gray-800 mb-3">Find Us on Map</h4>
+                            <div class="rounded-xl overflow-hidden shadow-lg" style="height: 250px;">
+                                <!-- Google Maps Embed Code for BUETK -->
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.083321482862!2d66.6430310750953!3d27.70298157613589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3938222a27b8764b%3A0x6b4507022204c321!2sBalochistan%20University%20of%20Engineering%20and%20Technology%2C%20Khuzdar!5e0!3m2!1sen!2spk!4v1709000000000!5m2!1sen!2spk"
+                                    width="100%"
+                                    height="100%"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="animate-slideIn" style="animation-delay: 0.4s;">
+                        <div class="bg-blue-50 p-8 rounded-xl shadow-lg">
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Send Us a Message</h3>
+                            <form class="space-y-6">
+                                <div>
+                                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Your Name</label>
+                                    <input type="text" id="name" name="name" class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" placeholder="John Doe" required>
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Your Email</label>
+                                    <input type="email" id="email" name="email" class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" placeholder="john.doe@example.com" required>
+                                </div>
+                                <div>
+                                    <label for="subject" class="block text-gray-700 text-sm font-bold mb-2">Subject</label>
+                                    <input type="text" id="subject" name="subject" class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" placeholder="Inquiry about admissions">
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                                    <textarea id="message" name="message" rows="5" class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" placeholder="Type your message here..." required></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn-primary px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl">
+                                        Send Message <i class="fas fa-paper-plane ml-2"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10 px-4 mt-auto">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- About BUETK -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">BUETK</h3>
+                <p class="text-gray-400 text-sm">
+                    Balochistan University of Engineering & Technology Khuzdar is committed to academic excellence and fostering innovation.
+                </p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#home" data-section="home" class="footer-link text-gray-400 text-sm">Home</a></li>
+                    <li><a href="#about" data-section="about" class="footer-link text-gray-400 text-sm">About Us</a></li>
+                    <li><a href="#academics" data-section="academics" class="footer-link text-gray-400 text-sm">Academics</a></li>
+                    <li><a href="#programs" data-section="programs" class="footer-link text-gray-400 text-sm">Programs</a></li>
+                    <li><a href="#admission" data-section="admission" class="footer-link text-gray-400 text-sm">Admission</a></li>
+                    <li><a href="#gallery" data-section="gallery" class="footer-link text-gray-400 text-sm">Gallery</a></li>
+                    <li><a href="#faculty" data-section="faculty" class="footer-link text-gray-400 text-sm">Faculty</a></li>
+                    <li><a href="#contact" data-section="contact" class="footer-link text-gray-400 text-sm">Contact</a></li>
+                    <li><a href="#login" data-section="login" class="footer-link text-gray-400 text-sm">Login</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><i class="fas fa-map-marker-alt mr-2"></i>Main Campus, Khuzdar</li>
+                    <li><i class="fas fa-phone-alt mr-2"></i>+92 848 123456</li>
+                    <li><i class="fas fa-envelope mr-2"></i>info@buetk.edu.pk</li>
+                    <li><i class="fas fa-globe mr-2"></i>www.buetk.edu.pk</li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+                <p class="text-gray-400 text-sm mb-4">Stay updated with our latest news and events.</p>
+                <form class="flex">
+                    <input type="email" placeholder="Your Email" class="p-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 flex-grow text-gray-800">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-r-lg transition-colors duration-300">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500 text-sm">
+            &copy; 2025 BUETK. All rights reserved. Designed with <i class="fas fa-heart text-red-500 mx-1"></i> by Your Name.
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

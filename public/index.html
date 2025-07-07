@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <header class="bg-blue-700 text-white p-4 shadow-md">
+        <div class="container flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Student Management System</h1>
+            <nav id="main-nav">
+                </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow container py-8">
+        <div id="loading-spinner" class="loading-overlay hidden">
+            <div class="spinner"></div>
+        </div>
+
+        <section id="auth-section" class="flex flex-col md:flex-row justify-center items-center gap-8">
+            <div class="w-full md:w-1/2 lg:w-1/3 dashboard-card">
+                <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800">Login</h2>
+                <form id="login-form" class="space-y-4">
+                    <div>
+                        <label for="login-username" class="block text-sm font-medium text-gray-700 mb-1">Username (Student ID or Admin Username)</label>
+                        <input type="text" id="login-username" name="username" class="form-input" placeholder="Enter your username" required>
+                    </div>
+                    <div>
+                        <label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input type="password" id="login-password" name="password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn-primary w-full">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <p id="login-message" class="text-center text-sm mt-4"></p>
+                </form>
+            </div>
+
+            <div class="w-full md:w-1/2 lg:w-1/3 dashboard-card">
+                <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800">Register (Admin Only)</h2>
+                <form id="register-form" class="space-y-4">
+                    <div>
+                        <label for="register-username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                        <input type="text" id="register-username" name="username" class="form-input" placeholder="Choose a username" required>
+                    </div>
+                    <div>
+                        <label for="register-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input type="password" id="register-password" name="password" class="form-input" placeholder="Choose a password" required>
+                    </div>
+                    <button type="submit" class="btn-secondary w-full">
+                        <i class="fas fa-user-plus"></i> Register Admin
+                    </button>
+                    <p class="text-sm text-gray-600 mt-2 text-center">
+                        Note: This registration is primarily for initial admin setup. Student accounts are managed by the admin after login.
+                    </p>
+                    <p id="register-message" class="text-center text-sm mt-4"></p>
+                </form>
+            </div>
+        </section>
+
+        <section id="admin-dashboard" class="hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Admin Dashboard</h2>
+
+            <nav class="bg-white p-4 rounded-lg shadow-md mb-8 flex flex-wrap justify-center gap-4">
+                <button id="show-students-btn" class="btn-primary"><i class="fas fa-users"></i> Manage Students</button>
+                <button id="show-courses-btn" class="btn-primary"><i class="fas fa-book"></i> Manage Courses</button>
+                <button id="show-grades-btn" class="btn-primary"><i class="fas fa-clipboard-list"></i> Manage Grades</button>
+            </nav>
+
+            <div id="admin-students-panel" class="dashboard-card mb-8">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center justify-between">
+                    <span><i class="fas fa-user-graduate mr-2"></i> Student Management</span>
+                    <button id="add-student-modal-btn" class="btn-success text-sm py-2 px-4"><i class="fas fa-plus-circle mr-1"></i> Add New Student</button>
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="table-header">Student ID</th>
+                                <th class="table-header">Name</th>
+                                <th class="table-header">Email</th>
+                                <th class="table-header">Contact</th>
+                                <th class="table-header">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="students-table-body" class="bg-white divide-y divide-gray-200">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="admin-courses-panel" class="dashboard-card hidden mb-8">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center justify-between">
+                    <span><i class="fas fa-book-open mr-2"></i> Course Management</span>
+                    <button id="add-course-modal-btn" class="btn-success text-sm py-2 px-4"><i class="fas fa-plus-circle mr-1"></i> Add New Course</button>
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="table-header">Code</th>
+                                <th class="table-header">Name</th>
+                                <th class="table-header">Credits</th>
+                                <th class="table-header">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courses-table-body" class="bg-white divide-y divide-gray-200">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="admin-grades-panel" class="dashboard-card hidden mb-8">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center justify-between">
+                    <span><i class="fas fa-percentage mr-2"></i> Grade Management</span>
+                    <button id="add-grade-modal-btn" class="btn-success text-sm py-2 px-4"><i class="fas fa-plus-circle mr-1"></i> Assign/Update Grade</button>
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="table-header">Student Name</th>
+                                <th class="table-header">Course Name</th>
+                                <th class="table-header">Score</th>
+                                <th class="table-header">Grade</th>
+                                <th class="table-header">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="grades-table-body" class="bg-white divide-y divide-gray-200">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="student-dashboard" class="hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Student Dashboard</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="dashboard-card">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center justify-between">
+                        <span><i class="fas fa-user-circle mr-2"></i> My Profile</span>
+                        <button id="edit-student-profile-btn" class="btn-primary text-sm py-2 px-4">
+                            <i class="fas fa-edit mr-1"></i> Update Profile
+                        </button>
+                    </h3>
+                    <div id="student-profile-details" class="space-y-2 text-gray-700">
+                        </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <span><i class="fas fa-book-reader mr-2"></i> My Enrolled Courses</span>
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="table-header">Course Code</th>
+                                    <th class="table-header">Course Name</th>
+                                    <th class="table-header">Credits</th>
+                                </tr>
+                            </thead>
+                            <tbody id="student-enrolled-courses-table-body" class="bg-white divide-y divide-gray-200">
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="dashboard-card">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center justify-between">
+                        <span><i class="fas fa-chart-bar mr-2"></i> My Grades</span>
+                        <button id="download-transcript-btn" class="btn-primary text-sm py-2 px-4"><i class="fas fa-file-pdf mr-1"></i> Download Transcript</button>
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="table-header">Course Code</th>
+                                    <th class="table-header">Course Name</th>
+                                    <th class="table-header">Credits</th>
+                                    <th class="table-header">Score</th>
+                                    <th class="table-header">Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody id="student-grades-table-body" class="bg-white divide-y divide-gray-200">
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="student-modal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <h3 id="student-modal-title" class="text-xl font-semibold mb-4">Add New Student</h3>
+                <form id="student-form" class="space-y-4">
+                    <div>
+                        <label for="student-unique-id" class="block text-sm font-medium text-gray-700 mb-1">Student Unique ID</label>
+                        <input type="text" id="student-unique-id" name="studentUniqueId" class="form-input" placeholder="e.g., S001" required>
+                    </div>
+                    <div>
+                        <label for="student-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input type="text" id="student-name" name="name" class="form-input" placeholder="Student's Full Name" required>
+                    </div>
+                    <div>
+                        <label for="student-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="student-email" name="email" class="form-input" placeholder="student@example.com" required>
+                    </div>
+                    <div>
+                        <label for="student-dob" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                        <input type="date" id="student-dob" name="dateOfBirth" class="form-input">
+                    </div>
+                    <div>
+                        <label for="student-address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                        <input type="text" id="student-address" name="address" class="form-input" placeholder="123 Main St">
+                    </div>
+                    <div>
+                        <label for="student-contact" class="block text-sm font-medium text-gray-700 mb-1">Contact Number</label>
+                        <input type="text" id="student-contact" name="contactNumber" class="form-input" placeholder="+1234567890">
+                    </div>
+                    <div id="student-password-group">
+                        <label for="student-password" class="block text-sm font-medium text-gray-700 mb-1">Password (for login)</label>
+                        <input type="password" id="student-password" name="password" class="form-input" placeholder="Assign a password" required>
+                    </div>
+                    <div class="flex justify-end space-x-4 mt-6">
+                        <button type="button" id="cancel-student-modal-btn" class="btn-secondary">Cancel</button>
+                        <button type="submit" id="save-student-btn" class="btn-primary">Save Student</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="course-modal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <h3 id="course-modal-title" class="text-xl font-semibold mb-4">Add New Course</h3>
+                <form id="course-form" class="space-y-4">
+                    <div>
+                        <label for="course-code" class="block text-sm font-medium text-gray-700 mb-1">Course Code</label>
+                        <input type="text" id="course-code" name="courseCode" class="form-input" placeholder="e.g., CS101" required>
+                    </div>
+                    <div>
+                        <label for="course-name" class="block text-sm font-medium text-gray-700 mb-1">Course Name</label>
+                        <input type="text" id="course-name" name="courseName" class="form-input" placeholder="e.g., Introduction to Programming" required>
+                    </div>
+                    <div>
+                        <label for="course-description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                        <textarea id="course-description" name="description" class="form-input" rows="3" placeholder="Brief description of the course"></textarea>
+                    </div>
+                    <div>
+                        <label for="course-credits" class="block text-sm font-medium text-gray-700 mb-1">Credits</label>
+                        <input type="number" id="course-credits" name="credits" class="form-input" placeholder="e.g., 3" min="1" required>
+                    </div>
+                    <div class="flex justify-end space-x-4 mt-6">
+                        <button type="button" id="cancel-course-modal-btn" class="btn-secondary">Cancel</button>
+                        <button type="submit" id="save-course-btn" class="btn-primary">Save Course</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="grade-modal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <h3 id="grade-modal-title" class="text-xl font-semibold mb-4">Assign/Update Grade</h3>
+                <form id="grade-form" class="space-y-4">
+                    <div>
+                        <label for="grade-student" class="block text-sm font-medium text-gray-700 mb-1">Student</label>
+                        <select id="grade-student" name="studentId" class="form-input" required>
+                            <option value="">Select a Student</option>
+                            </select>
+                    </div>
+                    <div>
+                        <label for="grade-course" class="block text-sm font-medium text-gray-700 mb-1">Course</label>
+                        <select id="grade-course" name="courseId" class="form-input" required>
+                            <option value="">Select a Course</option>
+                            </select>
+                    </div>
+                    <div>
+                        <label for="grade-score" class="block text-sm font-medium text-gray-700 mb-1">Score (0-100)</label>
+                        <input type="number" id="grade-score" name="score" class="form-input" placeholder="e.g., 85" min="0" max="100" required>
+                    </div>
+                    <div class="flex justify-end space-x-4 mt-6">
+                        <button type="button" id="cancel-grade-modal-btn" class="btn-secondary">Cancel</button>
+                        <button type="submit" id="save-grade-btn" class="btn-primary">Save Grade</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="student-profile-edit-modal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <h3 id="student-profile-edit-modal-title" class="text-xl font-semibold mb-4">Edit Your Profile</h3>
+                <form id="student-profile-edit-form" class="space-y-4">
+                    <div>
+                        <label for="edit-student-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input type="text" id="edit-student-name" name="name" class="form-input" placeholder="Your Full Name" required>
+                    </div>
+                    <div>
+                        <label for="edit-student-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="edit-student-email" name="email" class="form-input" placeholder="your@example.com" required>
+                    </div>
+                    <div>
+                        <label for="edit-student-dob" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                        <input type="date" id="edit-student-dob" name="dateOfBirth" class="form-input">
+                    </div>
+                    <div>
+                        <label for="edit-student-address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                        <input type="text" id="edit-student-address" name="address" class="form-input" placeholder="123 Main St">
+                    </div>
+                    <div>
+                        <label for="edit-student-contact" class="block text-sm font-medium text-gray-700 mb-1">Contact Number</label>
+                        <input type="text" id="edit-student-contact" name="contactNumber" class="form-input" placeholder="+1234567890">
+                    </div>
+                     <div>
+                        <label for="edit-student-password" class="block text-sm font-medium text-gray-700 mb-1">New Password (optional)</label>
+                        <input type="password" id="edit-student-password" name="password" class="form-input" placeholder="Leave blank to keep current password">
+                    </div>
+                    <div class="flex justify-end space-x-4 mt-6">
+                        <button type="button" id="cancel-student-profile-edit-modal-btn" class="btn-secondary">Cancel</button>
+                        <button type="submit" id="save-student-profile-btn" class="btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div id="confirm-modal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <h3 class="text-xl font-semibold mb-4">Confirm Action</h3>
+                <p id="confirm-message" class="mb-6 text-gray-700"></p>
+                <div class="flex justify-end space-x-4">
+                    <button type="button" id="cancel-confirm-btn" class="btn-secondary">Cancel</button>
+                    <button type="button" id="confirm-action-btn" class="btn-danger">Confirm</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="message-box" class="fixed bottom-4 right-4 bg-blue-600 text-white p-4 rounded-lg shadow-lg hidden z-50 transition-all duration-300 transform translate-y-full opacity-0">
+            <p id="message-text"></p>
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white p-4 text-center mt-auto shadow-inner">
+        <p>&copy; 2024 Student Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/student.js"></script>
+</body>
+</html>

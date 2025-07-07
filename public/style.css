@@ -1,0 +1,242 @@
+/* Custom CSS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #333;
+}
+
+/* Animations */
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.animate-slideDown {
+    animation: slideDown 0.6s ease-out forwards;
+}
+
+.animate-fadeIn {
+    opacity: 0; /* Start hidden */
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slideIn {
+    opacity: 0; /* Start hidden */
+    animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+/* Specific delays for staggered animations */
+.animate-slideIn:nth-child(2) { animation-delay: 0.2s; }
+.animate-slideIn:nth-child(3) { animation-delay: 0.4s; }
+.animate-slideIn:nth-child(4) { animation-delay: 0.6s; }
+.animate-slideIn:nth-child(5) { animation-delay: 0.8s; }
+.animate-slideIn:nth-child(6) { animation-delay: 1.0s; }
+.animate-slideIn:nth-child(7) { animation-delay: 1.2s; }
+
+
+/* Custom Button Styles */
+.btn-primary {
+    background-color: #3498db; /* Blue */
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9; /* Darker Blue */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation Link Styles */
+.nav-link {
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: #3498db; /* Blue underline */
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #3498db !important; /* Blue for active link */
+    font-weight: 700; /* Bold for active link */
+}
+
+.nav-link.active::after {
+    width: 100%; /* Active link always has underline */
+}
+
+/* Hero Section Specific Styles */
+.hero-section {
+    background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+    background-size: 200% 200%;
+    animation: gradientAnimation 10s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px); /* Adjust based on header height */
+    text-align: center;
+}
+
+/* Card/Feature Box Styles */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    display: inline-block;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.card:hover .feature-icon {
+    transform: scale(1.1);
+    color: #2980b9; /* Darker blue on hover */
+}
+
+/* Form Input Styles */
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: #374151; /* Dark gray text */
+    background-color: #f9fafb; /* Light background */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #3498db; /* Blue border on focus */
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); /* Light blue shadow on focus */
+}
+
+/* Mobile Menu Specifics */
+.mobile-menu {
+    transition: transform 0.3s ease-out;
+    transform: translateX(100%); /* Start off-screen */
+}
+
+.mobile-menu.translate-x-0 {
+    transform: translateX(0); /* Slide in */
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spinner {
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-top: 8px solid #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Message Box */
+#message-box {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    background-color: #3498db; /* Default info color */
+    z-index: 900; /* Below loading overlay */
+}
+
+#message-box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* General Layout Adjustments */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+}
+
+section {
+    scroll-margin-top: 80px; /* Adjust for fixed header height */
+}
