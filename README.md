@@ -120,6 +120,8 @@ We welcome contributions to improve this Student Portal! If you have suggestions
 
 # 📄 License
 This project is licensed under the MIT License. You are free to use, modify, and distribute this software for educational and personal purposes.
+# link to visit our website online
+[[https://effulgent-chimera-8d4ffd.netlify.app/home.html]]
 
 # 📞 Contact
 If you have any questions or need further assistance, feel free to reach out:
