@@ -1,9 +1,10 @@
-![image](https://github.com/user-attachments/assets/909f32ef-4c28-4801-bf27-d2378c1800e9)# student_portal_BUET_Khuzdar_by_Ahsan_tareen
-##Student Portal - BUETK
-##🚀 Project Overview
+
+#  student_portal_BUET_Khuzdar_by_Ahsan_tareen
+# Student Portal - BUETK
+# 🚀 Project Overview
 Welcome to the Student Portal for Balochistan University of Engineering and Technology, Khuzdar (BUETK)! This project aims to create a user-friendly and efficient web-based platform that streamlines various academic and administrative processes for BUETK students. Our goal is to provide a centralized hub where students can access essential information, manage their academic records, and interact with university resources seamlessly.
 
-##✨ Features
+# ✨ Features
 This portal offers a range of functionalities designed to enhance the student experience:
 
 Student Dashboard: A personalized dashboard providing a quick overview of grades, courses, announcements, and Download Script.
@@ -18,28 +19,28 @@ Admin: Admin as all rights to add new student,new course ,and add new grade.
 🛠️ Technologies Used
 This project is built using a combination of modern web technologies:
 
-#Frontend:
+# Frontend:
 
-HTML5-use for web page structure.
+## HTML5-use for web page structure.
 
-CSS3 : use for styling
-TALWIND CSS: use for modren styling
+## CSS3 : use for styling
+## TALWIND CSS: use for modren styling
 
-JavaScript: use for logic building
+## JavaScript: use for logic building
 
-#Backend:
+# Backend:
 
-Node.js: for server.
-Express.js: for building app
+### Node.js: for server.
+### Express.js: for building app
 
-#Database:
+# Database:
 
 MongoDB: use to store the backend data.
 
-#⚙️ Installation & Setup
+#  ⚙️ Installation & Setup
 Follow these steps to get a local copy of the project up and running on your machine:
 
-##Clone the repository:
+# Clone the repository:
 git clone https://github.com/your-username/student_portal_BUETK.git
 cd student_portal_BUETK
 Frontend Setup:
@@ -69,20 +70,20 @@ npm install
 node server.js # or whatever your main server file is
 [Remember to add instructions for database configuration, e.g., setting up .env files with database credentials.]
 
-🚀 Usage
+# 🚀 Usage
 Once the server is running and the frontend is accessible:
 
 Open your web browser and navigate to http://localhost:[5000] (e.g., http://localhost:5000 for React, or file:///path/to/your/.html for plain HTML).
 
 [information on default user credentials for testing.:]
 
-#Admin User: username: Admin, password: admin123
+# Admin User: username: Admin, password: admin123
 
-#Student User: username: 22SE01, password: ahsan123
+# Student User: username: 22SE01, password: ahsan123
 
 Explore the different sections of the portal, such as course registration, result viewing, and announcements.
 
-📸 Screenshots
+# 📸 Screenshots
 
 Screenshot of the university dashboard
 ![image](https://github.com/user-attachments/assets/36e266a1-223d-41ec-929c-db4720faf6af) 
@@ -112,15 +113,15 @@ Screenshot of the Adding Grades.
 ![image](https://github.com/user-attachments/assets/7809364e-7271-4421-a0f8-2daa23e1bbb9)
 ![image](https://github.com/user-attachments/assets/85e9e9b2-bbdf-4480-82a6-1c524e1be29c)
 
-🤝 Contributing
+# 🤝 Contributing
 We welcome contributions to improve this Student Portal! If you have suggestions or find issues, please open an issue or submit a pull request.
 
 
 
-📄 License
+# 📄 License
 This project is licensed under the MIT License. You are free to use, modify, and distribute this software for educational and personal purposes.
 
-📞 Contact
+# 📞 Contact
 If you have any questions or need further assistance, feel free to reach out:
 
 [[Ahsan Tareen / SanoX10]
